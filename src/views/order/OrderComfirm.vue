@@ -50,11 +50,14 @@ export default {
     };
     const handleConfirmOrder = async (isCanceled) => {
       const products = [];
+      // console.log(productList);
+      // computed算出的是ref类型
       for (let i in productList.value) {
         const product = productList.value[i];
         products.push({ id: parseInt(product._id, 10), num: product.count });
       }
       try {
+        // 此接口是死数据
         const result = await post("/api/order", {
           addressId: 1,
           shopId,
